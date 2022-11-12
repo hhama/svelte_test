@@ -6,15 +6,17 @@
   $: nextUrl = '/test/' + (parseInt(params.param) + 1);
 </script>
 
-<PageTransition>
-  <div>
-    <h1>This is {params.param}.</h1>
-    {#if params.param > 1}
-      <a href={prevUrl} use:link>Prev</a>
-    {/if}
-    <a href={nextUrl} use:link>Next</a>
-  </div>
-</PageTransition>
+{#key params.param}
+  <PageTransition>
+    <div>
+      <h1>This is {params.param}.</h1>
+      {#if params.param > 1}
+        <a href={prevUrl} use:link>Prev</a>
+      {/if}
+      <a href={nextUrl} use:link>Next</a>
+    </div>
+  </PageTransition>
+{/key}
 
 <style>
   div {
